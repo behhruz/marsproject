@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест на профориентацию</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="btn">
+            <a href="./uzbindex.html">
+                <img src="./images/pngwing.com (2).png" alt="ru" data-google-lang="uz" class="language__img" height="30px" width="30px">
+            </a>
+            <a href="./index.html">
+                <img src="./images/pngwing.com.png" alt="en" data-google-lang="ru" class="language__img" height="30px" width="30px">
+            </a>
+        </div>
+
+        <h1>Тест на профориентацию</h1>
+        <form id="startForm">
+            <label for="studentName">Введите имя ребенка:</label>
+            <input type="text" id="studentName" name="studentName" required>
+            <button type="button" onclick="startTest()">Начать тест</button>
+        </form>
+
+        <form id="careerTestForm" class="hidden">
+            <div class="question">
+                <p>1. Чем ты любишь заниматься в свободное время?</p>
+                <label><input type="radio" name="q1" value="A"> Играть в видеоигры</label><br>
+                <label><input type="radio" name="q1" value="B"> Создание искусства или графики</label><br>
+                <label><input type="radio" name="q1" value="C"> Решение головоломок</label><br>
+            </div>
+            <div class="question">
+                <p>2. Какой твой любимый предмет в школе?</p>
+                <label><input type="radio" name="q2" value="A"> Математика</label><br>
+                <label><input type="radio" name="q2" value="B"> Искусство</label><br>
+                <label><input type="radio" name="q2" value="C"> Наука</label><br>
+            </div>
+            <div class="question">
+                <p>3. Какое занятие кажется вам наиболее увлекательным?</p>
+                <label><input type="radio" name="q3" value="A"> Создание вещей из Lego</label><br>
+                <label><input type="radio" name="q3" value="B"> Чтение рассказов или комиксов</label><br>
+                <label><input type="radio" name="q3" value="C"> Экспериментируем с научными наборами</label><br>
+            </div>
+            <div class="question">
+                <p>4. Как вы относитесь к созданию новых вещей?</p>
+                <label><input type="radio" name="q6" value="A"> Я люблю изобретать и строить</label><br>
+                <label><input type="radio" name="q6" value="B"> Мне нравится рисовать и создавать произведения искусства</label><br>
+                <label><input type="radio" name="q6" value="C"> Мне нравится пробовать новые научные эксперименты</label><br>
+            </div>
+            <div class="question">
+                <p>5. Насколько вы заинтересованы в использовании компьютеров или планшетов?</p>
+                <label><input type="radio" name="q7" value="A"> Очень заинтересован</label><br>
+                <label><input type="radio" name="q7" value="B"> Немного интересно</label><br>
+                <label><input type="radio" name="q7" value="C"> Не очень интересно</label><br>
+            </div>
+            <div class="question">
+                <p>6. Вам нравится работать в команде с друзьями?</p>
+                <label><input type="radio" name="q8" value="A"> Да, я люблю командную работу</label><br>
+                <label><input type="radio" name="q8" value="B"> Иногда</label><br>
+                <label><input type="radio" name="q8" value="C"> Я предпочитаю работать один</label><br>
+            </div>
+            <div class="question">
+                <p>7. В какие игры ты любишь играть?</p>
+                <label><input type="radio" name="q9" value="A"> Видеоигры</label><br>
+                <label><input type="radio" name="q9" value="B"> Настольные игры</label><br>
+                <label><input type="radio" name="q9" value="C"> Игры на открытом воздухе</label><br>
+            </div>
+            <div class="question">
+                <p>8. Как вы предпочитаете узнавать новое?</p>
+                <label><input type="radio" name="q10" value="A"> Выполняя практические действия</label><br>
+                <label><input type="radio" name="q10" value="B"> Рисуя или визуализируя</label><br>
+                <label><input type="radio" name="q10" value="C"> Читая и исследуя</label><br>
+            </div>
+            <div class="question">
+                <p>9. Каким человеком ты восхищаешься больше всего?</p>
+                <label><input type="radio" name="q13" value="A"> Изобретатель или инженер</label><br>
+                <label><input type="radio" name="q13" value="B"> Художник или дизайнер</label><br>
+                <label><input type="radio" name="q13" value="C"> Ученый</label><br>
+            </div>
+            <div class="question">
+                <p>10. Каким хобби ты бы предпочел заняться?</p>
+                <label><input type="radio" name="q14" value="A"> Создание робота</label><br>
+                <label><input type="radio" name="q14" value="B"> Создание комикса</label><br>
+                <label><input type="radio" name="q14" value="C"> Проведение научного эксперимента</label><br>
+            </div>
+            <button type="button" onclick="calculateResults()">Отправить</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

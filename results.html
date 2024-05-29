@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результат на профориентацию</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="btn">
+            <img src="./images/pngwing.com (2).png" alt="ru" data-google-lang="uz" class="language__img" height="30px" width="30px">
+            <img src="./images/pngwing.com.png" alt="en" data-google-lang="ru" class="language__img" height="30px" width="30px">
+        </div>
+        <h1>Результат на профориентацию</h1>
+        <h2 id="studentName"></h2>
+        <canvas id="resultsChart" width="400" height="400"></canvas>
+        <div id="results">
+            <h2>Программирование/Кодирование: <span id="resultProgramming"></span>%</h2>
+            <h2>Дизайн/Творчество: <span id="resultDesign"></span>%</h2>
+            <h2>Наука/Техника: <span id="resultScience"></span>%</h2>
+        </div>
+        <h2 id="directionAdvice"></h2>
+        <button onclick="resetTest()">Сбросить тест</button>
+    </div>
+
+    <script>
+        document.getElementById('studentName').innerText = "Результаты " + localStorage.getItem('studentName');
+        const resultProgramming = localStorage.getItem('resultProgramming');
+        const resultDesign = localStorage.getItem('resultDesign');
+        const resultScience = localStorage.getItem('resultScience');
+
+        document.getElementById('resultProgramming').innerText = resultProgramming;
+        document.getElementById('resultDesign').innerText = resultDesign;
+        document.getElementById('resultScience').innerText = resultScience;
+
+        const ctx = document.getElementById('resultsChart').getContext('2d');
+        const resultsChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Programming/Coding', 'Design/Creative Arts', 'Science/Engineering'],
+                datasets: [{
+                    data: [
+                        resultProgramming,
+                        resultDesign,
+                        resultScience
+                    ],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const maxPercentage = Math.max(resultProgramming, resultDesign, resultScience, resultWriting);
+        let advice;
+        switch (maxPercentage) {
+            case parseInt(resultProgramming):
+                advice = "Основываясь на ваших результатах, мы рекомендуем изучить курсы по программированию/кодированию.";
+                break;
+            case parseInt(resultDesign):
+                advice = "Основываясь на ваших результатах, мы рекомендуем изучить курсы дизайна/творческого искусства.";
+                break;
+            case parseInt(resultScience):
+                advice = "Основываясь на ваших результатах, мы рекомендуем изучить курсы естественных наук/инженерии.";
+                break;
+        }
+        document.getElementById('directionAdvice').innerText = advice;
+
+        function resetTest() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
